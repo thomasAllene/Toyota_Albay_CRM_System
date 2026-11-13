@@ -1,0 +1,15 @@
+#inquiryTable th{
+    font-weight: bold;
+}
+
+#applicationTable th{
+    font-weight: bold;
+}
+
+#availableUnitsTable th{
+    font-weight: bold;
+}
+
+#statusTable th{
+    font-weight: bold;
+}
