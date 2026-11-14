@@ -8,24 +8,34 @@ use Illuminate\Support\Facades\DB;
 class InventorySeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the vehicle inventory. Units are picked from the vehicles that
+     * actually exist, so this keeps working if the catalogue size changes.
      */
     public function run(): void
     {
-        for ($i = 0; $i < 60; $i++) {
+        $vehicleIds = DB::table('vehicle')->pluck('id')->all();
+
+        if (empty($vehicleIds)) {
+            $this->command->warn('InventorySeeder: no vehicles found. Run VehicleSeeder first. Skipping.');
+            return;
+        }
+
+        for ($i = 0; $i < 80; $i++) {
+            $invoiceDate = now()->subDays(rand(15, 300));
+
             DB::table('inventory')->insert([
-                'year_model' => rand(2023, 2024), // Random year between 2000 and 2024
-                'vehicle_id' => rand(1, 60), // Assuming you have vehicle IDs from 1 to 100
-                'CS_number' => 'CS' . str_pad($i + 1, 3, '0', STR_PAD_LEFT), // CS_number format
-                'actual_invoice_date' => now()->subDays(rand(1, 365)), // Random date within the last year
-                'delivery_date' => now()->subDays(rand(1, 365)), // Random date within the last year
-                'invoice_number' => 'INV' . str_pad($i + 1, 5, '0', STR_PAD_LEFT), // Invoice number format
-                'age' => rand(1, 10), // Random age between 1 and 10
-                'status' => 'Available', // Default status
-                'CS_number_status' => 'Available', // Default CS_number status
-                'remarks' => 'Sample remark ' . ($i + 1), // Sample remarks
-                'created_at' => now(),
-                'updated_at' => now(),
+                'year_model'          => rand(2025, 2026),
+                'vehicle_id'          => $vehicleIds[array_rand($vehicleIds)],
+                'CS_number'           => 'CS' . str_pad($i + 1, 3, '0', STR_PAD_LEFT),
+                'actual_invoice_date' => $invoiceDate,
+                'delivery_date'       => $invoiceDate->copy()->addDays(rand(3, 20)),
+                'invoice_number'      => 'INV' . str_pad($i + 1, 5, '0', STR_PAD_LEFT),
+                'age'                 => rand(1, 10),
+                'status'              => 'Available',
+                'CS_number_status'    => 'Available',
+                'remarks'             => null,
+                'created_at'          => now(),
+                'updated_at'          => now(),
             ]);
         }
     }

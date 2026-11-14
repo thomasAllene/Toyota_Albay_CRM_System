@@ -1,66 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Toyota Albay Sales CRM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**One shared sales system for a car dealership, from first lead to vehicle release.**
 
-## About Laravel
+Toyota Albay's sales team used to track leads and vehicles across Excel files, paper forms and group chats. This system brings the whole pipeline into one place for 20–30 sales agents: inventory, leads, reservation, earmarking and releasing, with live dashboards for management.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Sales dashboard showing monthly released units](docs/screenshots/toyota-dashboard.webp)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## What it does
 
-## Learning Laravel
+| Problem | What we built | Result |
+|---|---|---|
+| Leads and vehicles lived in spreadsheets, logbooks and chat messages, so no one had the full picture. | A single pipeline covering **inventory, leads, reservation, earmarking and releasing**. | Every agent works from the same up-to-date records. |
+| Duplicate records led two agents to chase the same buyer, sparked commission disputes and inflated lead counts. | **One shared record per customer.** | No more double-handling, clear ownership of every sale, accurate reports. |
+| Monthly and quarterly reports took days to compile by hand. | **Live dashboards** with per-agent performance tracking. | Reporting went from days to instant. Management sees results anytime. |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Leads pipeline** by buyer type: Individual, Fleet, Corporate and Government
+- **Applications, vehicle reservations and vehicle releases**, each with status tracking
+- **Disputes** tracking
+- **Vehicle inventory** and **bank** records for financing
+- **Dashboards:** release stats, sales funnel, vehicle-to-sales and MP/agent ranking (ApexCharts)
+- **User and group management** with filters by team and agent
+- **Backlog uploads** for inventory and releases
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Screenshots
 
-## Laravel Sponsors
+| Leads pipeline | Customer inquiry record |
+|---|---|
+| ![Leads pipeline](docs/screenshots/toyota-leads-pipeline.webp) | ![Customer inquiry record](docs/screenshots/toyota-customer-record.webp) |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Per-agent sales ranking |
+|---|
+| ![MP/Agent ranking](docs/screenshots/toyota-agent-ranking.webp) |
 
-### Premium Partners
+> Screenshots use generated sample data. Names, numbers and addresses are made up.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Tech stack
 
-## Contributing
+- **Backend:** Laravel, PHP, MySQL
+- **Frontend:** Bootstrap, jQuery, DataTables, ApexCharts
+- **Design:** Figma (UI design and screen layouts)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## My role
 
-## Code of Conduct
+Built by a 4-person team, **September 2024 – February 2025**, as a freelance project for Toyota Albay.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+I worked as **full stack developer and UI/UX lead**:
 
-## Security Vulnerabilities
+- Mapped the sales process flow and designed the database
+- Set the UI design and screen layouts the whole team built on
+- Built across the frontend and backend
+- Joined client meetings with Toyota executives to gather requirements and present progress
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+The system was delivered on schedule, and management gave positive feedback after launch.
 
-## License
+## Running it locally
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Requirements: PHP 8.2+, Composer, Node.js and MySQL.
+
+```bash
+git clone https://github.com/thomasAllene/Toyota_Albay_CRM_System.git
+cd Toyota_Albay_CRM_System
+
+composer install
+npm install && npm run build
+
+cp .env.example .env      # then set your local database name, user and password
+php artisan key:generate
+php artisan migrate --seed # creates the tables and a year of sample data
+
+php artisan serve
+```
+
+Then open http://127.0.0.1:8000 and sign in with a sample account:
+
+| Role | Email | Password |
+|---|---|---|
+| Manager (full access) | `demo@toyotaalbay.test` | `password` |
+| Sales agent | `agent1@toyotaalbay.test` | `password` |
+
+The seeder creates 10 sample agents (`agent1` to `agent10`) with about 250 leads and 150 applications spread from January to today, so every dashboard and table has data. All names, numbers and addresses are made up.
+
+---
+
+**Portfolio:** [thomasallene.github.io/thomas-2026-portfolio](https://thomasallene.github.io/thomas-2026-portfolio/projects/toyota-albay-crm)
